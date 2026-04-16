@@ -1564,6 +1564,7 @@ downloadScoreBtn?.addEventListener("click", async () => {
           "Status": "Information",
           "Commentaire": remarkAns.comment.trim(),
           "Action Correctives": "",
+          "Actions Préventives": "",
           "Responsable": "",
           "Delai": ""
         });
@@ -1606,8 +1607,8 @@ downloadScoreBtn?.addEventListener("click", async () => {
       "Question": row["Question"],
       "Status": row["Status"],
       "Commentaire": row["Commentaire"],
+      "Actions Préventives": row["Actions Préventives"],
       "Action Correctives": row["Action Correctives"],
-      "Action Préventives": row["Action Préventives"]
       "Responsable": row["Responsable"],
       "Delai": row["Delai"]
     }));
