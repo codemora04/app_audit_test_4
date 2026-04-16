@@ -876,7 +876,7 @@ function showRubriques(rubriquesObj, existingAnswers = []) {
           <input type="text" name="comment_${index}_${qIndex}" placeholder="Commentaire..." />
         </td>
         <td>
-          <input type="file" name="image_${index}_${qIndex}" accept="image/*"  />
+          <input type="file" name="image_0_${qIndex}" accept="image/png, image/jpeg, image/jpg" />
         </td>
       `;
 
