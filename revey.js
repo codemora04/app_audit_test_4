@@ -1607,6 +1607,7 @@ downloadScoreBtn?.addEventListener("click", async () => {
       "Status": row["Status"],
       "Commentaire": row["Commentaire"],
       "Action Correctives": row["Action Correctives"],
+      "Action Préventives": row["Action Préventives"]
       "Responsable": row["Responsable"],
       "Delai": row["Delai"]
     }));
