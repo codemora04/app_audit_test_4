@@ -283,33 +283,76 @@ function renderChart(labels, datasets) {
 
     Chart.defaults.color = "#94a3b8";
 
+    const isMobile = window.innerWidth < 768;
+
     scoreChart = new Chart(ctx, {
         type: "bar",
         data: { labels, datasets },
         options: {
             responsive: true,
-            datasets:{
-                bar:{
-                    barPercentage:0.4,
-                    categoryPercentage: 0.5,
-                }
+            maintainAspectRatio: !isMobile,
+            datasets: {
+                bar: {
+                    barPercentage: isMobile ? 0.6 : 0.4,
+                    categoryPercentage: isMobile ? 0.7 : 0.5,
+                },
+            },
+            layout: {
+                padding: isMobile
+                    ? { left: 5, right: 5, top: 10, bottom: 5 }
+                    : { left: 10, right: 10, top: 10, bottom: 10 },
             },
             scales: {
                 y: {
                     beginAtZero: true,
+                    min: 0,
                     max: 100,
-                    grid: { color: "rgba(255,255,255,0.1)" },
-                    ticks: { callback: value => value + "%" },
+                    ticks: {
+                        stepSize: 10,
+                        callback: value => value + "%",
+                        font: { size: isMobile ? 10 : 12 },
+                        color: "#64748b",
+                    },
+                    grid: {
+                        color: "rgba(100, 116, 139, 0.15)",
+                        drawBorder: true,
+                    },
+                    border: {
+                        color: "rgba(100, 116, 139, 0.3)",
+                    },
+                    title: {
+                        display: !isMobile,
+                        text: "Score (%)",
+                        font: { size: 13, weight: "600" },
+                        color: "#475569",
+                    },
                 },
                 x: {
-                    grid: { color: "rgba(255,255,255,0.05)" },
+                    ticks: {
+                        maxRotation: isMobile ? 45 : 0,
+                        minRotation: isMobile ? 45 : 0,
+                        font: { size: isMobile ? 9 : 12 },
+                        color: "#64748b",
+                    },
+                    grid: {
+                        color: "rgba(100, 116, 139, 0.08)",
+                        drawBorder: true,
+                    },
+                    border: {
+                        color: "rgba(100, 116, 139, 0.3)",
+                    },
                 },
             },
             plugins: {
                 legend: {
                     display: true,
                     position: "bottom",
-                    labels: { color: "var(--text-main)" },
+                    labels: {
+                        color: "#1e293b",
+                        font: { size: isMobile ? 10 : 12 },
+                        boxWidth: isMobile ? 12 : 40,
+                        padding: isMobile ? 8 : 15,
+                    },
                 },
                 tooltip: {
                     callbacks: {
